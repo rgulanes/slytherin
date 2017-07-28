@@ -2,6 +2,14 @@
 
 All notable changes to `Slytherin` will be documented in this file.
 
+## [1.0.0](https://github.com/rougin/slytherin/compare/v0.9.1...v1.0.0) - Unreleased
+
+**NOTE**: This release may break your application if upgrading from `v0.9.1` release.
+
+### Removed
+- `ComponentCollection`
+- `Components`
+
 ## [0.9.1](https://github.com/rougin/slytherin/compare/v0.9.0...v0.9.1) - 2017-07-21
 
 ### Fixed
@@ -10,12 +18,6 @@ All notable changes to `Slytherin` will be documented in this file.
 ## [0.9.0](https://github.com/rougin/slytherin/compare/v0.8.0...v0.9.0) - 2017-07-08
 
 **NOTE**: This release may break your application if upgrading from `v0.8.0` release.
-
-### Fixed
-- Appending of middleware response from `DispatcherInterface`'s result in `Application::run`
-- `Array to string conversion` error when add callback routes with arguments
-- Compatibility issue for `Statigility\Middleware`
-- Getting `$request` object in container after being defined in `Application::handle`
 
 ### Added
 - Implementation of [PSR-7](http://www.php-fig.org/psr/psr-7), [PSR-11](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-11-container.md), and [PSR-15](https://github.com/php-fig/fig-standards/blob/master/proposed/http-middleware/middleware.md) standards.
@@ -54,6 +56,12 @@ All notable changes to `Slytherin` will be documented in this file.
 - `Middleware\Stratigility\Middleware` class
 - `Template\Twig\Renderer` class
 - `Vanilla` related classes
+
+### Fixed
+- Appending of middleware response from `DispatcherInterface`'s result in `Application::run`
+- `Array to string conversion` error when add callback routes with arguments
+- Compatibility issue for `Statigility\Middleware`
+- Getting `$request` object in container after being defined in `Application::handle`
 
 ### Removed
 - HTTP method spoofing (apply it on a [middleware](https://github.com/rougin/weasley/blob/master/src/Http/Middleware/FormMethodSpoofing.php) instead)
