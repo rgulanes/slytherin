@@ -40,8 +40,7 @@ class ErrorHandlerIntegration implements \Rougin\Slytherin\Integration\Integrati
 
             ini_set('display_errors', 1);
 
-            // NOTE: To be removed in v1.0.0. Use $handler->display() instead.
-            $container->set('Rougin\Slytherin\Debug\ErrorHandlerInterface', $handler);
+            $handler->display();
         }
 
         return $container;

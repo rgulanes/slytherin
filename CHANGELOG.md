@@ -6,6 +6,9 @@ All notable changes to `Slytherin` will be documented in this file.
 
 **NOTE**: This release may break your application if upgrading from `v0.9.1` release.
 
+### Changed
+- `$handler->display()` in `ErrorHandlerIntegration` instead from `Application::run`
+
 ### Removed
 - `ComponentCollection`
 - `Components`

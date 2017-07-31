@@ -105,13 +105,6 @@ class Application
      */
     public function run()
     {
-        // NOTE: To be removed in v1.0.0. Use "ErrorHandlerIntegration" instead.
-        if (static::$container->has(self::ERROR_HANDLER)) {
-            $debugger = static::$container->get(self::ERROR_HANDLER);
-
-            $debugger->display();
-        }
-
         $response = $this->handle(static::$container->get(self::SERVER_REQUEST));
 
         $code = $response->getStatusCode() . ' ' . $response->getReasonPhrase();
