@@ -31,18 +31,6 @@ class DebuggerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests if the debugger's environment is equal to the specified environment.
-     *
-     * @return void
-     */
-    public function testSetEnvironmentMethod()
-    {
-        $this->debugger->setEnvironment($this->environment);
-
-        $this->assertEquals($this->environment, $this->debugger->getEnvironment());
-    }
-
-    /**
      * Tests the display() method.
      *
      * @return void

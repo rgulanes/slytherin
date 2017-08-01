@@ -37,31 +37,6 @@ class WhoopsErrorHandler implements ErrorHandlerInterface
     }
 
     /**
-     * Sets up the environment to be used.
-     * NOTE: To be removed in v1.0.0.
-     *
-     * @param  string $environment
-     * @return self
-     */
-    public function setEnvironment($environment)
-    {
-        $this->environment = $environment;
-
-        return $this;
-    }
-
-    /**
-     * Gets the specified environment.
-     * NOTE: To be removed in v1.0.0.
-     *
-     * @return string
-     */
-    public function getEnvironment()
-    {
-        return $this->environment;
-    }
-
-    /**
      * Returns a listing of handlers.
      * NOTE: To be removed in v1.0.0. Use __call() instead.
      *

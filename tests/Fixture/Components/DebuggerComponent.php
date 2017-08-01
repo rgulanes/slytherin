@@ -26,10 +26,6 @@ class DebuggerComponent extends \Rougin\Slytherin\Component\AbstractComponent
      */
     public function get()
     {
-        $debugger = new \Rougin\Slytherin\Debug\Vanilla\Debugger;
-
-        $debugger->setEnvironment('development');
-
-        return $debugger;
+        return new \Rougin\Slytherin\Debug\Vanilla\Debugger('development');
     }
 }
