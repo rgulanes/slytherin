@@ -181,4 +181,30 @@ class ServerRequestTest extends \PHPUnit_Framework_TestCase
 
         $this->assertFalse(isset($newAttributes['age']));
     }
+
+    /**
+     * Tests withMethod().
+     *
+     * @return void
+     */
+    public function testWithMethod()
+    {
+        $request = $this->request->withMethod('PUT');
+
+        $this->assertEquals('PUT', $request->getMethod());
+    }
+
+    /**
+     * Tests withUri().
+     *
+     * @return void
+     */
+    public function testWithUri()
+    {
+        $uri = new Uri('http://localhost:8000');
+
+        $request = $this->request->withUri($uri);
+
+        $this->assertEquals($uri, $request->getUri());
+    }
 }

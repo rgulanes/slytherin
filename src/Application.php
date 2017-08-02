@@ -16,9 +16,6 @@ use Psr\Http\Message\ServerRequestInterface;
  */
 class Application
 {
-    // NOTE: To be removed in v1.0.0
-    const ERROR_HANDLER = 'Rougin\Slytherin\Debug\ErrorHandlerInterface';
-
     const MIDDLEWARE_DISPATCHER = 'Rougin\Slytherin\Middleware\DispatcherInterface';
 
     const SERVER_REQUEST = 'Psr\Http\Message\ServerRequestInterface';
@@ -85,13 +82,13 @@ class Application
     {
         list($config, $container) = array($config ?: $this->config, static::$container);
 
-        $integrations = is_string($integrations) ? array($integrations) : $integrations;
-
-        foreach ($integrations as $integration) {
-            $integration = new $integration;
+        $integrations = array_map(function ($item) use (&$container, $config) {
+            $integration = new $item;
 
             $container = $integration->define($container, $config);
-        }
+
+            return $integration;
+        }, is_string($integrations) ? array($integrations) : $integrations);
 
         static::$container = $container;
 
@@ -107,13 +104,17 @@ class Application
     {
         $response = $this->handle(static::$container->get(self::SERVER_REQUEST));
 
-        $code = $response->getStatusCode() . ' ' . $response->getReasonPhrase();
+        list($code, $reason) = array($response->getStatusCode(), $response->getReasonPhrase());
 
-        header('HTTP/' . $response->getProtocolVersion() . ' ' . $code);
+        header(sprintf('HTTP/%s %s %s', $response->getProtocolVersion(), $code, $reason));
 
-        foreach ($response->getHeaders() as $name => $values) {
+        $headers = $response->getHeaders();
+
+        $headers = array_map(function ($name, $values) {
             header($name . ': ' . implode(',', $values));
-        }
+
+            return $name . ': ' . implode(',', $values);
+        }, array_keys($headers), $response->getHeaders());
 
         echo (string) $response->getBody();
     }

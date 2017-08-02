@@ -53,4 +53,18 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($data['database']['username'], $config->get('database.username'));
     }
+
+    /**
+     * Tests Configuration::load.
+     *
+     * @return void
+     */
+    public function testLoadMethod()
+    {
+        $config = new Configuration;
+
+        $config->load(__DIR__ . '/../Fixture/Configurations');
+
+        $this->assertEquals('Slytherin', $config->get('test.name'));
+    }
 }

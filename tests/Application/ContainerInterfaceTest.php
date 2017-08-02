@@ -23,7 +23,9 @@ class ContainerInterfaceTest extends ApplicationTestCases
 
         $middleware = new \Rougin\Slytherin\Middleware\Dispatcher;
 
-        $response = new \Rougin\Slytherin\Http\Response;
+        $headers = array('X-SLYTHERIN-HEADER' => array('foobar'));
+
+        $response = new \Rougin\Slytherin\Http\Response(200, null, $headers);
 
         $container->set('Psr\Http\Message\ServerRequestInterface', $this->request('GET', '/'));
         $container->set('Psr\Http\Message\ResponseInterface', $response);

@@ -10,8 +10,8 @@ All notable changes to `Slytherin` will be documented in this file.
 - `$handler->display()` in `ErrorHandlerIntegration` instead from `Application::run`
 
 ### Removed
+- `Component` related classes
 - `ComponentCollection`
-- `Components`
 - `setEnvironment` and `getEnvironment` in `ErrorHandler` and `WhoopsErrorHandler`
 
 ## [0.9.1](https://github.com/rougin/slytherin/compare/v0.9.0...v0.9.1) - 2017-07-21
