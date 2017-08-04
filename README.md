@@ -60,9 +60,10 @@ $router = new Rougin\Slytherin\Routing\Router;
 $router->get('/', 'App\Http\Controllers\WelcomeController@index');
 
 // Supply values to integrations through Rougin\Slytherin\Configuration
-$config = (new Rougin\Slytherin\Integration\Configuration)
-    ->set('app.http.server', $_SERVER)
-    ->set('app.router', $router);
+$config = new Rougin\Slytherin\Integration\Configuration;
+
+$config->set('app.http.server', $_SERVER);
+$config->set('app.router', $router);
 
 // Run the application using the specified integrations and configuration
 (new Rougin\Slytherin\Application)->integrate($integrations, $config)->run();
