@@ -81,18 +81,6 @@ class Router implements RouterInterface
     }
 
     /**
-     * Merges a listing of parsed routes to current one.
-     * NOTE: To be removed in v1.0.0. Use $this->merge() instead.
-     *
-     * @param  array $routes
-     * @return self
-     */
-    public function addRoutes(array $routes)
-    {
-        return $this->merge($routes);
-    }
-
-    /**
      * Returns a specific route based on the specified HTTP method and URI.
      * NOTE: To be removed in v1.0.0. Use $this->retrieve() instead.
      *
@@ -210,19 +198,6 @@ class Router implements RouterInterface
         $this->prefix = $prefix;
 
         return $this;
-    }
-
-    /**
-     * Sets a prefix for the succeeding route endpoints.
-     * NOTE: To be removed in v1.0.0. Use $this->prefix() instead.
-     *
-     * @param  string $prefix
-     * @param  string $namespace
-     * @return self
-     */
-    public function setPrefix($prefix = '', $namespace = '')
-    {
-        return $this->prefix($prefix, $namespace);
     }
 
     /**

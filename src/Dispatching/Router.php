@@ -11,6 +11,6 @@ namespace Rougin\Slytherin\Dispatching;
  * @package Slytherin
  * @author  Rougin Royce Gutib <rougingutib@gmail.com>
  */
-class Router extends \Rougin\Slytherin\Dispatching\Vanilla\Router
+class Router extends \Rougin\Slytherin\Routing\Router
 {
 }

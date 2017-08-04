@@ -1,6 +1,6 @@
 <?php
 
-namespace Rougin\Slytherin\Template\Vanilla;
+namespace Rougin\Slytherin\Template;
 
 class RendererTest extends \PHPUnit_Framework_TestCase
 {
@@ -16,9 +16,9 @@ class RendererTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $directories = array(__DIR__ . '/../../Fixture/Templates');
+        $directories = array(__DIR__ . '/../Fixture/Templates');
 
-        $this->renderer = new \Rougin\Slytherin\Template\Vanilla\Renderer($directories);
+        $this->renderer = new \Rougin\Slytherin\Template\Renderer($directories);
     }
 
     /**

@@ -12,7 +12,15 @@ All notable changes to `Slytherin` will be documented in this file.
 ### Removed
 - `Component` related classes
 - `ComponentCollection`
+- `Container\Container::add` method
+- `Middleware\Dispatcher::__invoke` method 
+- `Middleware\Dispatcher::getStack` method
+- `Middleware\FinalResponse` class
+- `Middleware\Router::addRoutes` method
+- `Middleware\Router::setPrefix` method
+- `Middleware\Stratigility` directory
 - `setEnvironment` and `getEnvironment` in `ErrorHandler` and `WhoopsErrorHandler`
+- `Vanilla` related classes
 
 ## [0.9.1](https://github.com/rougin/slytherin/compare/v0.9.0...v0.9.1) - 2017-07-21
 

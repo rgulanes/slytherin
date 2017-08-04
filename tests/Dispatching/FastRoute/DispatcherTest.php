@@ -139,7 +139,7 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase
     {
         $routes = array(array('GET', '/', 'Rougin\Slytherin\Fixture\Classes\NewClass@index', 'Rougin\Slytherin\Fixture\Middlewares\LastMiddleware'));
 
-        $router = new \Rougin\Slytherin\Dispatching\Vanilla\Router($routes);
+        $router = new \Rougin\Slytherin\Routing\Router($routes);
 
         $dispatcher = new \Rougin\Slytherin\Dispatching\FastRoute\Dispatcher($router);
 

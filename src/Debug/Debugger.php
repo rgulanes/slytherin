@@ -11,6 +11,6 @@ namespace Rougin\Slytherin\Debug;
  * @package Slytherin
  * @author  Rougin Royce Gutib <rougingutib@gmail.com>
  */
-class Debugger extends \Rougin\Slytherin\Debug\Vanilla\Debugger
+class Debugger extends \Rougin\Slytherin\Debug\ErrorHandler
 {
 }

@@ -82,7 +82,7 @@ class Application
     {
         list($config, $container) = array($config ?: $this->config, static::$container);
 
-        $integrations = array_map(function ($item) use (&$container, $config) {
+        array_map(function ($item) use (&$container, $config) {
             $integration = new $item;
 
             $container = $integration->define($container, $config);
@@ -110,7 +110,7 @@ class Application
 
         $headers = $response->getHeaders();
 
-        $headers = array_map(function ($name, $values) {
+        array_map(function ($name, $values) {
             header($name . ': ' . implode(',', $values));
 
             return $name . ': ' . implode(',', $values);

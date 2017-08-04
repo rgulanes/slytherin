@@ -117,7 +117,7 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase
      */
     public function testDispatchMethodWithDifferentRouter()
     {
-        $router = new \Rougin\Slytherin\Dispatching\Vanilla\Router($this->routes);
+        $router = new \Rougin\Slytherin\Routing\Router($this->routes);
 
         $dispatcher = new \Rougin\Slytherin\Dispatching\Phroute\Dispatcher($router);
 

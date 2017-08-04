@@ -2,8 +2,8 @@
 
 namespace Rougin\Slytherin\Fixture\Components;
 
-use Rougin\Slytherin\Dispatching\Vanilla\Router;
-use Rougin\Slytherin\Dispatching\Vanilla\Dispatcher;
+use Rougin\Slytherin\Routing\Router;
+use Rougin\Slytherin\Routing\Dispatcher;
 
 /**
  * Dispatcher Component

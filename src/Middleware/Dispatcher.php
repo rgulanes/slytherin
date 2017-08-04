@@ -45,39 +45,6 @@ class Dispatcher implements \Rougin\Slytherin\Middleware\DispatcherInterface
     }
 
     /**
-     * Processes the specified middlewares from stack.
-     * NOTE: To be removed in v1.0.0. Use MiddlewareInterface::process instead.
-     *
-     * @param  \Psr\Http\Message\ServerRequestInterface $request
-     * @param  \Psr\Http\Message\ResponseInterface      $response
-     * @param  array                                    $stack
-     * @return \Psr\Http\Message\ResponseInterface
-     */
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $stack = array())
-    {
-        $this->response = $response;
-
-        $this->stack = (empty($this->stack)) ? $stack : $this->stack;
-
-        $last = $this->callback(end($this->stack), $response);
-
-        array_pop($this->stack);
-
-        return $this->process($request, new Delegate($last));
-    }
-
-    /**
-     * Returns the listing of middlewares included.
-     * NOTE: To be removed in v1.0.0. Use $this->stack() instead.
-     *
-     * @return array
-     */
-    public function getStack()
-    {
-        return $this->stack();
-    }
-
-    /**
      * Processes an incoming server request and return a response.
      *
      * @param  \Psr\Http\Message\ServerRequestInterface         $request
@@ -151,30 +118,6 @@ class Dispatcher implements \Rougin\Slytherin\Middleware\DispatcherInterface
         }
 
         return count($object->getParameters()) == 2;
-    }
-
-    /**
-     * Returns the middleware as a single pass callable.
-     *
-     * @param  callable|object|string              $middleware
-     * @param  \Psr\Http\Message\ResponseInterface $response
-     * @return callable
-     */
-    protected function callback($middleware, ResponseInterface $response)
-    {
-        $middleware = is_string($middleware) ? new $middleware : $middleware;
-
-        $callback = function ($request, $next = null) use ($middleware) {
-            return $middleware($request, $next);
-        };
-
-        if ($this->approach($middleware) == self::SINGLE_PASS) {
-            $callback = function ($request, $next = null) use ($middleware, $response) {
-                return $middleware($request, $response, $next);
-            };
-        }
-
-        return $callback;
     }
 
     /**

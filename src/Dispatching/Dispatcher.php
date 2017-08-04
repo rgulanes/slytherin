@@ -11,6 +11,6 @@ namespace Rougin\Slytherin\Dispatching;
  * @package Slytherin
  * @author  Rougin Royce Gutib <rougingutib@gmail.com>
  */
-class Dispatcher extends \Rougin\Slytherin\Dispatching\Vanilla\Dispatcher
+class Dispatcher extends \Rougin\Slytherin\Routing\Dispatcher
 {
 }

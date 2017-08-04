@@ -39,19 +39,6 @@ class Container implements ContainerInterface
     }
 
     /**
-     * Adds a new instance to the container.
-     * NOTE: To be removed in v1.0.0. Use $this->set() instead.
-     *
-     * @param  string     $id
-     * @param  mixed|null $concrete
-     * @return self
-     */
-    public function add($id, $concrete = null)
-    {
-        return $this->set($id, $concrete);
-    }
-
-    /**
      * Creates an alias for a specified class.
      *
      * @param string $id

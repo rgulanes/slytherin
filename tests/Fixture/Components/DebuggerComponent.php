@@ -26,6 +26,6 @@ class DebuggerComponent extends \Rougin\Slytherin\Component\AbstractComponent
      */
     public function get()
     {
-        return new \Rougin\Slytherin\Debug\Vanilla\Debugger('development');
+        return new \Rougin\Slytherin\Debug\ErrorHandler('development');
     }
 }
