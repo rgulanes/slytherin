@@ -83,7 +83,7 @@ Open your web browser and go to [http://localhost:8000](http://localhost:8000).
 * A [PSR-11](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-11-container.md) compliant Container package
 * Any route dispatching package, must be implemented in [`DispatcherInterface`](src/Routing/DispatcherInterface.php)
 
-Slytherin also provide implementations of the mentioned items above.
+**NOTE**: Slytherin also provide implementations of the mentioned items above.
 
 ## Change log
 
