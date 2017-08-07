@@ -108,7 +108,7 @@ class Application
 
         header(sprintf('HTTP/%s %s %s', $response->getProtocolVersion(), $code, $reason));
 
-        $headers = $response->getHeaders();
+        list($body, $headers) = array($response->getBody(), $response->getHeaders());
 
         array_map(function ($name, $values) {
             header($name . ': ' . implode(',', $values));
@@ -116,6 +116,6 @@ class Application
             return $name . ': ' . implode(',', $values);
         }, array_keys($headers), $response->getHeaders());
 
-        echo (string) $response->getBody();
+        echo (string) $body;
     }
 }

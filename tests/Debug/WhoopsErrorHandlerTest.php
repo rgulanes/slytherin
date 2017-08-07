@@ -27,13 +27,11 @@ class DebuggerTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        if (! class_exists('Whoops\Run')) {
-            $this->markTestSkipped('Whoops is not installed.');
-        }
+        class_exists('Whoops\Run') || $this->markTestSkipped('Whoops is not installed.');
 
         $whoops = new \Whoops\Run;
 
-        $this->debugger = new \Rougin\Slytherin\Debug\Whoops\Debugger($whoops);
+        $this->debugger = new \Rougin\Slytherin\Debug\WhoopsErrorHandler($whoops);
     }
 
     /**
@@ -48,22 +46,6 @@ class DebuggerTest extends \PHPUnit_Framework_TestCase
         $handlers = $this->debugger->getHandlers();
 
         $this->assertInstanceOf('Whoops\Handler\PrettyPageHandler', $handlers[0]);
-    }
-
-    /**
-     * Tests if the specified handler is in the debugger's list of handlers.
-     *
-     * @return void
-     */
-    public function testSetHandlerMethodWithCallback()
-    {
-        $this->debugger->setHandler(function () {
-            return 'Hello';
-        });
-
-        $handlers = $this->debugger->getHandlers();
-
-        $this->assertInstanceOf('Whoops\Handler\CallbackHandler', $handlers[0]);
     }
 
     /**

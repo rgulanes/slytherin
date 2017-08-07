@@ -37,17 +37,6 @@ class WhoopsErrorHandler implements ErrorHandlerInterface
     }
 
     /**
-     * Returns a listing of handlers.
-     * NOTE: To be removed in v1.0.0. Use __call() instead.
-     *
-     * @return \Whoops\Handler\HandlerInterface[]
-     */
-    public function getHandlers()
-    {
-        return $this->whoops->getHandlers();
-    }
-
-    /**
      * Registers the instance as an error handler.
      *
      * @return mixed

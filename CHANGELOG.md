@@ -13,6 +13,8 @@ All notable changes to `Slytherin` will be documented in this file.
 - `Component` related classes
 - `ComponentCollection`
 - `Container\Container::add` method
+- `Debug\Debugger` class
+- `Debugger` related classes
 - `Middleware\Dispatcher::__invoke` method 
 - `Middleware\Dispatcher::getStack` method
 - `Middleware\FinalResponse` class

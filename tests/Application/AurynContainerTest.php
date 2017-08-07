@@ -17,6 +17,8 @@ class AurynContainerTest extends ApplicationTestCases
      */
     public function setUp()
     {
+        class_exists('Auryn\Injector') || $this->markTestSkipped('Auryn is not installed.');
+
         $container = new \Rougin\Slytherin\Container\AurynContainer;
 
         $container->share($this->request('GET', '/'));
