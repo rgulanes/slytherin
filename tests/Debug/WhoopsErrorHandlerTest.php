@@ -8,7 +8,7 @@ namespace Rougin\Slytherin\Debug\Whoops;
  * @package Slytherin
  * @author  Rougin Royce Gutib <rougingutib@gmail.com>
  */
-class DebuggerTest extends \PHPUnit_Framework_TestCase
+class WhoopsErrorHandlerTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var \Rougin\Slytherin\Debug\DebuggerInterface
