@@ -72,16 +72,4 @@ class PhrouteRouter extends Router
 
         return ($parsed) ? $this->collector->getData() : $routes;
     }
-
-    /**
-     * Sets the collector of routes.
-     *
-     * @param \Phroute\Phroute\RouteCollector $collector
-     */
-    public function setCollector(RouteCollector $collector)
-    {
-        $this->collector = $collector;
-
-        return $this;
-    }
 }

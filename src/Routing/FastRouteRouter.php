@@ -36,18 +36,6 @@ class FastRouteRouter extends Router
     }
 
     /**
-     * Sets the collector of routes.
-     *
-     * @param \FastRoute\RouteCollector $collector
-     */
-    public function setCollector(RouteCollector $collector)
-    {
-        $this->collector = $collector;
-
-        return $this;
-    }
-
-    /**
      * Returns a listing of routes available.
      *
      * @param  boolean $parsed

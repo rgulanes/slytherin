@@ -66,46 +66,6 @@ class Router implements RouterInterface
     }
 
     /**
-     * Adds a new raw route.
-     * NOTE: To be removed in v1.0.0. Use $this->add() instead.
-     *
-     * @param  string       $httpMethod
-     * @param  string       $route
-     * @param  array|string $handler
-     * @param  array|string $middlewares
-     * @return self
-     */
-    public function addRoute($httpMethod, $route, $handler, $middlewares = array())
-    {
-        return $this->add($httpMethod, $route, $handler, $middlewares);
-    }
-
-    /**
-     * Returns a specific route based on the specified HTTP method and URI.
-     * NOTE: To be removed in v1.0.0. Use $this->retrieve() instead.
-     *
-     * @param  string $httpMethod
-     * @param  string $uri
-     * @return array|null
-     */
-    public function getRoute($httpMethod, $uri)
-    {
-        return $this->retrieve($httpMethod, $uri);
-    }
-
-    /**
-     * Returns a listing of available routes.
-     * NOTE: To be removed in v1.0.0. Use $this->routes() instead.
-     *
-     * @param  boolean $parsed
-     * @return array
-     */
-    public function getRoutes($parsed = false)
-    {
-        return $this->routes($parsed);
-    }
-
-    /**
      * Checks if the specified route is available in the router.
      *
      * @param  string $httpMethod
