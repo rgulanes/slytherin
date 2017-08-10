@@ -24,7 +24,7 @@ class AurynContainerTest extends \PHPUnit_Framework_TestCase
     {
         class_exists('Auryn\Injector') || $this->markTestSkipped('Auryn is not installed.');
 
-        $this->container = new \Rougin\Slytherin\Container\AurynContainer(new \Auryn\Injector);
+        $this->container = new \Rougin\Slytherin\Container\AurynContainer;
     }
 
     /**

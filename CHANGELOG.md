@@ -11,19 +11,20 @@ All notable changes to `Slytherin` will be documented in this file.
 
 ### Removed
 - `addRoute`, `getRoute`, and `getRoutes` in `Routing\Router`
-- `setCollector` in `FastRouteRouter` and `PhrouteRouter`
 - `Component` related classes
 - `ComponentCollection`
 - `Container\Container::add` method
 - `Debug\Debugger` class
 - `Debugger` related classes
 - `Dispatching` directory
+- `IoC` directory
 - `Middleware\Dispatcher::__invoke` method 
 - `Middleware\Dispatcher::getStack` method
 - `Middleware\FinalResponse` class
 - `Middleware\Router::addRoutes` method
 - `Middleware\Router::setPrefix` method
 - `Middleware\Stratigility` directory
+- `setCollector` in `FastRouteRouter` and `PhrouteRouter`
 - `setEnvironment` and `getEnvironment` in `ErrorHandler` and `WhoopsErrorHandler`
 - `Vanilla` related classes
 

@@ -25,39 +25,9 @@ class AurynContainer extends Injector implements ContainerInterface
     protected $has = array();
 
     /**
-     * @var \Auryn\Injector
-     */
-    protected $injector;
-
-    /**
      * @var array
      */
     protected $instances = array();
-
-    /**
-     * NOTE: To be removed in v1.0.0. It should use \Auryn\Injector::__construct.
-     *
-     * @param \Auryn\Injector|\Auryn\Reflector|null $data
-     */
-    public function __construct($data = null)
-    {
-        is_a($data, 'Auryn\Injector') || parent::__construct($data);
-
-        $this->injector = get_class($data) == 'Auryn\Injector' ? $data : $this;
-    }
-
-    /**
-     * Adds a new instance to the container.
-     * NOTE: To be removed in v1.0.0. Use $this->set() instead.
-     *
-     * @param  string     $id
-     * @param  mixed|null $concrete
-     * @return self
-     */
-    public function add($id, $concrete = null)
-    {
-        return $this->set($id, $concrete);
-    }
 
     /**
      * Finds an entry of the container by its identifier and returns it.
@@ -92,7 +62,7 @@ class AurynContainer extends Injector implements ContainerInterface
         if (isset($this->has[$id]) === false) {
             $filter = Injector::I_BINDINGS | Injector::I_DELEGATES | Injector::I_PREPARES | Injector::I_ALIASES | Injector::I_SHARES;
 
-            $definitions = array_filter($this->injector->inspect($id, $filter));
+            $definitions = array_filter($this->inspect($id, $filter));
 
             $has = ! empty($definitions) ?: class_exists($id);
         }
@@ -126,7 +96,7 @@ class AurynContainer extends Injector implements ContainerInterface
 
         ! isset($this->instances[$id]) || $entry = $this->instances[$id];
 
-        isset($entry) || $entry = $this->injector->make($id);
+        isset($entry) || $entry = $this->make($id);
 
         return $entry;
     }
