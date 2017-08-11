@@ -17,6 +17,7 @@ All notable changes to `Slytherin` will be documented in this file.
 - `Debug\Debugger` class
 - `Debugger` related classes
 - `Dispatching` directory
+- `ErrorHandler` directory
 - `IoC` directory
 - `Middleware\Dispatcher::__invoke` method 
 - `Middleware\Dispatcher::getStack` method
@@ -24,6 +25,7 @@ All notable changes to `Slytherin` will be documented in this file.
 - `Middleware\Router::addRoutes` method
 - `Middleware\Router::setPrefix` method
 - `Middleware\Stratigility` directory
+- `Middleware`, `MiddlewareInterface`, and `StratigilityMiddleware` classes
 - `setCollector` in `FastRouteRouter` and `PhrouteRouter`
 - `setEnvironment` and `getEnvironment` in `ErrorHandler` and `WhoopsErrorHandler`
 - `Vanilla` related classes
