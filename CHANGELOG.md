@@ -26,6 +26,7 @@ All notable changes to `Slytherin` will be documented in this file.
 - `Middleware\Router::setPrefix` method
 - `Middleware\Stratigility` directory
 - `Middleware`, `MiddlewareInterface`, and `StratigilityMiddleware` classes
+- `Renderer\Twig` directory
 - `Routing` directory
 - `setCollector` in `FastRouteRouter` and `PhrouteRouter`
 - `setEnvironment` and `getEnvironment` in `ErrorHandler` and `WhoopsErrorHandler`

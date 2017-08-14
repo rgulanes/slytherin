@@ -1,8 +1,8 @@
 <?php
 
-namespace Rougin\Slytherin\Template\Twig;
+namespace Rougin\Slytherin\Template;
 
-class RendererTest extends \PHPUnit_Framework_TestCase
+class TwigRendererTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var \Rougin\Slytherin\Template\RendererInterface
@@ -25,11 +25,11 @@ class RendererTest extends \PHPUnit_Framework_TestCase
             $this->markTestSkipped('Twig is not installed.');
         }
 
-        $directory = __DIR__ . '/../../Fixture/Templates';
+        $directory = __DIR__ . '/../Fixture/Templates';
         $loader    = new \Twig_Loader_Filesystem($directory);
 
         $this->twig     = new \Twig_Environment($loader);
-        $this->renderer = new \Rougin\Slytherin\Template\Twig\Renderer($this->twig);
+        $this->renderer = new \Rougin\Slytherin\Template\TwigRenderer($this->twig);
     }
 
     /**
@@ -68,7 +68,7 @@ class RendererTest extends \PHPUnit_Framework_TestCase
     {
         $expected = 'This is a text from a template.';
         $globals  = array('name' => 'template');
-        $renderer = new \Rougin\Slytherin\Template\Twig\Renderer($this->twig, $globals);
+        $renderer = new \Rougin\Slytherin\Template\TwigRenderer($this->twig, $globals);
 
         $renderer->addGlobal('test', 'wew');
 
