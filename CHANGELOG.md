@@ -76,7 +76,7 @@ All notable changes to `Slytherin` will be documented in this file.
 - `IoC` directory
 - `Middleware\MiddlewareInterface` interface
 - `Middleware\Stratigility\Middleware` class
-- `Template\Twig\Renderer` class
+- `Template\Twig` class
 - `Vanilla` related classes
 
 ### Fixed
