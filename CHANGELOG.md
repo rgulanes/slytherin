@@ -8,6 +8,7 @@ All notable changes to `Slytherin` will be documented in this file.
 
 ### Changed
 - `$handler->display()` in `ErrorHandlerIntegration` instead from `Application::run`
+- Parameters in `WhoopsErrorHandler::__construct`
 
 ### Removed
 - `addRoute`, `getRoute`, and `getRoutes` in `Routing\Router`

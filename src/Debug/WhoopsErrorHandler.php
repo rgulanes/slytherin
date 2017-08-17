@@ -21,46 +21,33 @@ class WhoopsErrorHandler implements ErrorHandlerInterface
     protected $environment = '';
 
     /**
-     * @var \Whoops\Run
+     * @var \Whoops\Run|null
      */
-    protected $whoops;
+    protected $whoops = null;
 
     /**
-     * @param \Whoops\Run $whoops
-     * @param string      $environment
+     * @param string           $environment
+     * @param \Whoops\Run|null $whoops
      */
-    public function __construct(\Whoops\Run $whoops, $environment = 'development')
+    public function __construct($environment = 'development', \Whoops\Run $whoops = null)
     {
         $this->environment = $environment;
 
-        $this->whoops = $whoops;
+        $this->whoops = $whoops ?: new \Whoops\Run;
     }
 
     /**
      * Registers the instance as an error handler.
      *
-     * @return mixed
+     * @return \Whoops\Run
      */
     public function display()
     {
-        error_reporting(E_ALL);
-
         $handler = new \Whoops\Handler\PrettyPageHandler;
 
         $this->__call('pushHandler', array($handler));
 
         return $this->whoops->register();
-    }
-
-    /**
-     * Sets a handler.
-     * NOTE: To be removed in v1.0.0. Use __call() instead.
-     *
-     * @param \Whoops\Handler\HandlerInterface|callable $handler
-     */
-    public function setHandler($handler)
-    {
-        $this->whoops->pushHandler($handler);
     }
 
     /**

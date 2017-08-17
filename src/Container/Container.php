@@ -21,11 +21,9 @@ class Container implements ContainerInterface
     protected $extra;
 
     /**
-     * NOTE: To be removed in v1.0.0. Use "protected" visibility instead.
-     *
      * @var array
      */
-    public $instances = array();
+    protected $instances = array();
 
     /**
      * @param array                                  $instances

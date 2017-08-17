@@ -15,7 +15,7 @@ interface ErrorHandlerInterface
     /**
      * Registers the instance as an error handler.
      *
-     * @return object
+     * @return void
      */
     public function display();
 }

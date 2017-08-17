@@ -29,23 +29,7 @@ class WhoopsErrorHandlerTest extends \PHPUnit_Framework_TestCase
     {
         class_exists('Whoops\Run') || $this->markTestSkipped('Whoops is not installed.');
 
-        $whoops = new \Whoops\Run;
-
-        $this->debugger = new \Rougin\Slytherin\Debug\WhoopsErrorHandler($whoops);
-    }
-
-    /**
-     * Tests if the specified handler is in the debugger's list of handlers.
-     *
-     * @return void
-     */
-    public function testSetHandlerMethod()
-    {
-        $this->debugger->setHandler(new \Whoops\Handler\PrettyPageHandler);
-
-        $handlers = $this->debugger->getHandlers();
-
-        $this->assertInstanceOf('Whoops\Handler\PrettyPageHandler', $handlers[0]);
+        $this->debugger = new \Rougin\Slytherin\Debug\WhoopsErrorHandler;
     }
 
     /**

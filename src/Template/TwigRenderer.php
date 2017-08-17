@@ -22,15 +22,9 @@ class TwigRenderer implements RendererInterface
 
     /**
      * @param \Twig_Environment $twig
-     * @param array             $globals -- NOTE: To be removed in v1.0.0.
      */
-    public function __construct(\Twig_Environment $twig, array $globals = array())
+    public function __construct(\Twig_Environment $twig)
     {
-        // NOTE: To be removed in v1.0.0. Use __call instead
-        foreach ($globals as $key => $value) {
-            $twig->addGlobal($key, $value);
-        }
-
         $this->twig = $twig;
     }
 

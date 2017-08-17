@@ -21,14 +21,12 @@ class TwigRendererTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        if (! class_exists('Twig_Environment')) {
-            $this->markTestSkipped('Twig is not installed.');
-        }
+        class_exists('Twig_Environment') || $this->markTestSkipped('Twig is not installed.');
 
         $directory = __DIR__ . '/../Fixture/Templates';
-        $loader    = new \Twig_Loader_Filesystem($directory);
 
-        $this->twig     = new \Twig_Environment($loader);
+        $this->twig = new \Twig_Environment(new \Twig_Loader_Filesystem($directory));
+
         $this->renderer = new \Rougin\Slytherin\Template\TwigRenderer($this->twig);
     }
 
@@ -53,7 +51,8 @@ class TwigRendererTest extends \PHPUnit_Framework_TestCase
     {
         $expected = 'This is a text from a template.';
 
-        $data     = array('name' => 'template');
+        $data = array('name' => 'template');
+
         $rendered = $this->renderer->render('test-with-twig-data', $data, 'php');
 
         $this->assertEquals($expected, $rendered);
@@ -67,10 +66,10 @@ class TwigRendererTest extends \PHPUnit_Framework_TestCase
     public function testRenderMethodWithGlobals()
     {
         $expected = 'This is a text from a template.';
-        $globals  = array('name' => 'template');
-        $renderer = new \Rougin\Slytherin\Template\TwigRenderer($this->twig, $globals);
 
-        $renderer->addGlobal('test', 'wew');
+        $renderer = new \Rougin\Slytherin\Template\TwigRenderer($this->twig);
+
+        $renderer->addGlobal('name', 'template');
 
         $this->assertEquals($expected, $renderer->render('test-with-twig-data', array(), 'php'));
     }

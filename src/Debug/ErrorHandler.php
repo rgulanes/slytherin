@@ -29,7 +29,7 @@ class ErrorHandler implements ErrorHandlerInterface
     /**
      * Registers the instance as an error handler.
      *
-     * @return mixed
+     * @return void
      */
     public function display()
     {
