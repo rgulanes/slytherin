@@ -27,7 +27,7 @@ class ErrorHandlerIntegration implements \Rougin\Slytherin\Integration\Integrati
     {
         $environment = $config->get('app.environment', 'development');
 
-        list($handler, $whoops) = array(new ErrorHandler($environment), 'Whoops\Run'); 
+        list($handler, $whoops) = array(new ErrorHandler($environment), 'Whoops\Run');
 
         if (class_exists($whoops) === true) {
             $run = $container->has($whoops) ? $container->get($whoops) : null;
