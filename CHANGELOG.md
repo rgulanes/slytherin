@@ -6,6 +6,9 @@ All notable changes to `Slytherin` will be documented in this file.
 
 **NOTE**: This release may break your application if upgrading from `v0.9.1` release.
 
+### Added
+- Allow dot notation in accessing files on `Template\Renderer`
+
 ### Changed
 - `$handler->display()` in `ErrorHandlerIntegration` instead from `Application::run`
 - Parameters in `WhoopsErrorHandler::__construct`
