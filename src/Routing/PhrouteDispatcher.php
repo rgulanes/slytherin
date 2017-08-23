@@ -64,7 +64,7 @@ class PhrouteDispatcher extends Dispatcher implements DispatcherInterface
 
             $result = array($result, $middlewares);
         } catch (\Exception $exception) {
-            $this->exceptions($exception, $uri);
+            $this->exceptions($exception, $httpMethod, $uri);
         }
 
         return $result;
@@ -109,17 +109,16 @@ class PhrouteDispatcher extends Dispatcher implements DispatcherInterface
      * @throws \UnexpectedValueException
      *
      * @param \Exception $exception
+     * @param string     $httpMethod
      * @param string     $uri
      */
-    protected function exceptions(\Exception $exception, $uri)
+    protected function exceptions(\Exception $exception, $httpMethod, $uri)
     {
+        $error = sprintf('Route "%s %s" not found', $httpMethod, $uri);
+
         $interface = 'Phroute\Phroute\Exception\HttpRouteNotFoundException';
 
-        $message = $exception->getMessage();
-
-        if (is_a($exception, $interface)) {
-            $message = 'Route "' . $uri . '" not found';
-        }
+        $message = is_a($exception, $interface) ? $error : $exception->getMessage();
 
         throw new \UnexpectedValueException($message);
     }

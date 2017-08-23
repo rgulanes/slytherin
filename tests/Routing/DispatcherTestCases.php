@@ -91,7 +91,7 @@ class DispatcherTestCases extends \PHPUnit_Framework_TestCase
     {
         $this->exists(get_class($this->dispatcher));
 
-        $this->setExpectedException('UnexpectedValueException', 'Route "/test" not found');
+        $this->setExpectedException('UnexpectedValueException', 'Route "GET /test" not found');
 
         $this->dispatcher->dispatch('GET', '/test');
     }
