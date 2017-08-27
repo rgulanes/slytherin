@@ -8,6 +8,7 @@ All notable changes to `Slytherin` will be documented in this file.
 
 ### Added
 - Allow dot notation in accessing files on `Template\Renderer`
+- HTTP Method in returning error if a route is not found in `Routing`
 
 ### Changed
 - `$handler->display()` in `ErrorHandlerIntegration` instead from `Application::run`

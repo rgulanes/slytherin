@@ -46,7 +46,7 @@ class FastRouteDispatcher extends Dispatcher implements DispatcherInterface
         $result = $this->dispatcher->dispatch($httpMethod, $uri);
 
         if ($result[0] == \FastRoute\Dispatcher::NOT_FOUND) {
-            $message = 'Route "' . $uri . '" not found';
+            $message = sprintf('Route "%s %s" not found', $httpMethod, $uri);
 
             throw new \UnexpectedValueException($message);
         }

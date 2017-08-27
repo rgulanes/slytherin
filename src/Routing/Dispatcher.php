@@ -47,7 +47,7 @@ class Dispatcher implements DispatcherInterface
             array_push($routes, $parsed);
         }
 
-        $route = $this->retrieve($routes, $uri);
+        $route = $this->retrieve($routes, $httpMethod, $uri);
 
         return array(array($route[0], $route[1]), $route[2]);
     }
@@ -124,15 +124,16 @@ class Dispatcher implements DispatcherInterface
      * @throws \UnexpectedValueException
      *
      * @param  array  $routes
+     * @param  string $httpMethod
      * @param  string $uri
      * @return array
      */
-    protected function retrieve(array $routes, $uri)
+    protected function retrieve(array $routes, $httpMethod, $uri)
     {
         $routes = array_values(array_filter($routes));
 
         if (empty($routes)) {
-            $message = 'Route "' . $uri . '" not found';
+            $message = sprintf('Route "%s %s" not found', $httpMethod, $uri);
 
             throw new \UnexpectedValueException($message);
         }
