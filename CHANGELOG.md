@@ -16,6 +16,7 @@ All notable changes to `Slytherin` will be documented in this file.
 
 ### Removed
 - `addRoute`, `getRoute`, and `getRoutes` in `Routing\Router`
+- `Application\Application` class
 - `Component` related classes
 - `ComponentCollection`
 - `Container\Container::add` method
