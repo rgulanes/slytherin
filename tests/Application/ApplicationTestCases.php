@@ -2,6 +2,8 @@
 
 namespace Rougin\Slytherin\Application;
 
+use Rougin\Slytherin\Application;
+
 /**
  * Application Test Cases
  *
