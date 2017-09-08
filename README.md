@@ -79,8 +79,8 @@ Open your web browser and go to [http://localhost:8000](http://localhost:8000).
 
 ### Required packages
 
-* A [PSR-7](http://www.php-fig.org/psr/psr-7) compliant HTTP package
-* A [PSR-11](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-11-container.md) compliant Container package
+* Any [PSR-7](http://www.php-fig.org/psr/psr-7) compliant HTTP package
+* Any [PSR-11](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-11-container.md) compliant Container package
 * Any route dispatching package, must be implemented in [`DispatcherInterface`](src/Routing/DispatcherInterface.php)
 
 ## Change log
