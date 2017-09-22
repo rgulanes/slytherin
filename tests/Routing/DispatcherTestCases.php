@@ -141,19 +141,5 @@ class DispatcherTestCases extends \PHPUnit_Framework_TestCase
      */
     protected function exists($dispatcher)
     {
-        switch ($dispatcher) {
-            case 'Rougin\Slytherin\Routing\FastRouteDispatcher':
-                if (! interface_exists('FastRoute\Dispatcher')) {
-                    $this->markTestSkipped('FastRoute is not installed.');
-                }
-
-                break;
-            case 'Rougin\Slytherin\Routing\PhrouteDispatcher':
-                if (! class_exists('Phroute\Phroute\Dispatcher')) {
-                    $this->markTestSkipped('Phroute is not installed.');
-                }
-
-                break;
-        }
     }
 }

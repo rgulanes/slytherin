@@ -2,9 +2,6 @@
 
 namespace Rougin\Slytherin\Middleware;
 
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-
 /**
  * Dispatcher Interface
  *
@@ -13,7 +10,7 @@ use Psr\Http\Message\ServerRequestInterface;
  * @package Slytherin
  * @author  Rougin Royce Gutib <rougingutib@gmail.com>
  */
-interface DispatcherInterface extends \Interop\Http\ServerMiddleware\MiddlewareInterface
+interface DispatcherInterface extends \Interop\Http\Server\MiddlewareInterface
 {
     /**
      * Adds a new middleware or a list of middlewares in the stack.

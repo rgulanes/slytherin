@@ -6,7 +6,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use Rougin\Slytherin\Http\Response;
-use Interop\Http\ServerMiddleware\DelegateInterface;
+use Interop\Http\Server\RequestHandlerInterface;
 
 /**
  * Body Parameters Middleware
@@ -14,7 +14,7 @@ use Interop\Http\ServerMiddleware\DelegateInterface;
  * @package Slytherin
  * @author  Rougin Royce Gutib <rougingutib@gmail.com>
  */
-class BodyParametersMiddleware implements \Interop\Http\ServerMiddleware\MiddlewareInterface
+class BodyParametersMiddleware implements \Interop\Http\Server\MiddlewareInterface
 {
     /**
      * @var array
@@ -25,11 +25,11 @@ class BodyParametersMiddleware implements \Interop\Http\ServerMiddleware\Middlew
      * Process an incoming server request and return a response, optionally delegating
      * to the next middleware component to create the response.
      *
-     * @param  \Psr\Http\Message\ServerRequestInterface         $request
-     * @param  \Interop\Http\ServerMiddleware\DelegateInterface $delegate
+     * @param  \Psr\Http\Message\ServerRequestInterface     $request
+     * @param  \Interop\Http\Server\RequestHandlerInterface $handler
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function process(ServerRequestInterface $request, DelegateInterface $delegate)
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler)
     {
         if (in_array($request->getMethod(), $this->complex)) {
             parse_str(file_get_contents('php://input'), $body);
@@ -37,6 +37,6 @@ class BodyParametersMiddleware implements \Interop\Http\ServerMiddleware\Middlew
             $request = $request->withParsedBody($body);
         }
 
-        return $delegate->process($request);
+        return $handler->handle($request);
     }
 }

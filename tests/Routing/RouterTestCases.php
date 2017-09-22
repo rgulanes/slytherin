@@ -230,19 +230,5 @@ class RouterTestCases extends \PHPUnit_Framework_TestCase
      */
     protected function exists($router)
     {
-        switch ($router) {
-            case 'Rougin\Slytherin\Routing\FastRouteRouter':
-                if (! class_exists('FastRoute\RouteCollector')) {
-                    $this->markTestSkipped('FastRoute is not installed.');
-                }
-
-                break;
-            case 'Rougin\Slytherin\Routing\PhrouteRouter':
-                if (! class_exists('Phroute\Phroute\RouteCollector')) {
-                    $this->markTestSkipped('Phroute is not installed.');
-                }
-
-                break;
-        }
     }
 }

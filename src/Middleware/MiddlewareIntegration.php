@@ -46,12 +46,6 @@ class MiddlewareIntegration implements \Rougin\Slytherin\Integration\Integration
     {
         $dispatcher = new Dispatcher($stack, $response);
 
-        if (class_exists('Zend\Stratigility\MiddlewarePipe')) {
-            $pipe = new \Zend\Stratigility\MiddlewarePipe;
-
-            $dispatcher = new StratigilityDispatcher($pipe, $stack, $response);
-        }
-
         return $dispatcher;
     }
 }

@@ -5,7 +5,7 @@ namespace Rougin\Slytherin\Middleware;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
- * Delegate
+ * Request Handler
  *
  * Calls the callback with a specified HTTP request.
  *
@@ -13,7 +13,7 @@ use Psr\Http\Message\ServerRequestInterface;
  * @author  Rougin Royce Gutib <rougingutib@gmail.com>
  * @author  Rasmus Schultz <rasmus@mindplay.dk>
  */
-class Delegate implements \Interop\Http\ServerMiddleware\DelegateInterface
+class RequestHandler implements \Interop\Http\Server\RequestHandlerInterface
 {
     /**
      * @var callable|array
@@ -34,7 +34,7 @@ class Delegate implements \Interop\Http\ServerMiddleware\DelegateInterface
      * @param  \Psr\Http\Message\ServerRequestInterface $request
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function process(ServerRequestInterface $request)
+    public function handle(ServerRequestInterface $request)
     {
         return call_user_func($this->callback, $request);
     }
@@ -47,7 +47,7 @@ class Delegate implements \Interop\Http\ServerMiddleware\DelegateInterface
      */
     public function __invoke(ServerRequestInterface $request)
     {
-        return $this->process($request);
+        return $this->handle($request);
     }
 
     /**

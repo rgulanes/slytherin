@@ -2,11 +2,11 @@
 
 namespace Rougin\Slytherin\Middleware;
 
+use Interop\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Interop\Http\ServerMiddleware\DelegateInterface;
 
-use Rougin\Slytherin\Middleware\Delegate;
+use Rougin\Slytherin\Middleware\RequestHandler;
 
 /**
  * Dispatcher
@@ -47,16 +47,16 @@ class Dispatcher implements \Rougin\Slytherin\Middleware\DispatcherInterface
     /**
      * Processes an incoming server request and return a response.
      *
-     * @param  \Psr\Http\Message\ServerRequestInterface         $request
-     * @param  \Interop\Http\ServerMiddleware\DelegateInterface $delegate
+     * @param  \Psr\Http\Message\ServerRequestInterface     $request
+     * @param  \Interop\Http\Server\RequestHandlerInterface $handler
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function process(ServerRequestInterface $request, DelegateInterface $delegate)
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler)
     {
         $original = $this->stack;
 
-        $this->push(function ($request) use ($delegate) {
-            return $delegate->process($request);
+        $this->push(function ($request) use ($handler) {
+            return $handler->handle($request);
         });
 
         foreach ($this->stack as $index => $middleware) {
@@ -124,7 +124,7 @@ class Dispatcher implements \Rougin\Slytherin\Middleware\DispatcherInterface
      * Resolves the whole stack through its index.
      *
      * @param  integer $index
-     * @return \Interop\Http\ServerMiddleware\DelegateInterface
+     * @return \Interop\Http\Server\RequestHandlerInterface
      */
     protected function resolve($index)
     {
@@ -142,7 +142,7 @@ class Dispatcher implements \Rougin\Slytherin\Middleware\DispatcherInterface
             };
         }
 
-        return new Delegate($callback);
+        return new RequestHandler($callback);
     }
 
     /**
@@ -150,11 +150,11 @@ class Dispatcher implements \Rougin\Slytherin\Middleware\DispatcherInterface
      *
      * @param  callable|object $middleware
      * @param  boolean         $wrap
-     * @return \Interop\Http\ServerMiddleware\MiddlewareInterface
+     * @return \Interop\Http\Server\MiddlewareInterface
      */
     protected function transform($middleware, $wrap = true)
     {
-        if (! is_a($middleware, 'Interop\Http\ServerMiddleware\MiddlewareInterface')) {
+        if (! is_a($middleware, 'Interop\Http\Server\MiddlewareInterface')) {
             $approach = $this->approach($middleware);
 
             $response = ($approach == self::SINGLE_PASS) ? $this->response : null;

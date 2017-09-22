@@ -37,6 +37,7 @@ All notable changes to `Slytherin` will be documented in this file.
 - `setCollector` in `FastRouteRouter` and `PhrouteRouter`
 - `setEnvironment` and `getEnvironment` in `ErrorHandler` and `WhoopsErrorHandler`
 - `Vanilla` related classes
+- All third-party implementations except `WhoopsErrorHandler`
 
 ## [0.9.1](https://github.com/rougin/slytherin/compare/v0.9.0...v0.9.1) - 2017-07-21
 
@@ -108,7 +109,7 @@ All notable changes to `Slytherin` will be documented in this file.
 - Using `add` in `Component\Collector` if not using `IoC\Vanilla\Container`
 
 ### Removed
-- Third party packages in `require-dev`
+- Third-party packages in `require-dev`
 
 ## [0.7.0](https://github.com/rougin/slytherin/compare/v0.6.0...v0.7.0) - 2016-07-17
 

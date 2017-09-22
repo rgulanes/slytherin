@@ -134,11 +134,6 @@ class ApplicationTestCases extends \PHPUnit_Framework_TestCase
 
         $dispatcher = \Rougin\Slytherin\Application::container()->get($interface);
 
-        // TODO: Implement resolving of type hinted parameters from container to PhrouteResolver
-        if (is_a($dispatcher, 'Rougin\Slytherin\Routing\PhrouteDispatcher')) {
-            $this->markTestSkipped('Resolving type hinted parameters are not yet implemented in Phroute.');
-        }
-
         $request = $this->request('GET', '/typehint/202');
 
         $result = $this->application->handle($request);
@@ -216,13 +211,6 @@ class ApplicationTestCases extends \PHPUnit_Framework_TestCase
                 $request = $request->withParsedBody($data);
 
                 break;
-        }
-
-        // TODO: Remove this one. This was added because of Phroute will resolve it automatically. :(
-        if (method_exists(Application::container(), 'set')) {
-            $container = Application::container()->set(Application::SERVER_REQUEST, $request);
-
-            $this->application = new Application($container);
         }
 
         return $request;

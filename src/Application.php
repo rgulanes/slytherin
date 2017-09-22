@@ -63,9 +63,9 @@ class Application
         if (static::$container->has(self::MIDDLEWARE_DISPATCHER)) {
             $middleware = static::$container->get(self::MIDDLEWARE_DISPATCHER);
 
-            $delegate = new Middleware\Delegate($callback);
+            $handler = new Middleware\RequestHandler($callback);
 
-            $result = $middleware->process($request, $delegate);
+            $result = $middleware->process($request, $handler);
         }
 
         return (isset($result)) ? $result : $callback($request);

@@ -46,7 +46,9 @@ class HttpIntegration implements \Rougin\Slytherin\Integration\IntegrationInterf
             $request = $request->withHeader($key, $value);
         }
 
-        return $this->resolve($container, $request, $response);
+        $container->set('Psr\Http\Message\ServerRequestInterface', $request);
+
+        return $container->set('Psr\Http\Message\ResponseInterface', $response);
     }
 
     /**
@@ -64,29 +66,6 @@ class HttpIntegration implements \Rougin\Slytherin\Integration\IntegrationInterf
         $server = $config->get('app.http.server', $this->server());
 
         return array($server, $cookies, $get, $files, $post);
-    }
-
-    /**
-     * Checks on what object will be defined to container.
-     *
-     * @param  \Rougin\Slytherin\Container\ContainerInterface $container
-     * @param  \Psr\Http\Message\ServerRequestInterface       $request
-     * @param  \Psr\Http\Message\ResponseInterface            $response
-     * @return \Rougin\Slytherin\Container\ContainerInterface
-     */
-    protected function resolve(ContainerInterface $container, ServerRequestInterface $request, ResponseInterface $response)
-    {
-        if (class_exists('Zend\Diactoros\ServerRequestFactory')) {
-            $request = \Zend\Diactoros\ServerRequestFactory::fromGlobals();
-
-            $response = new \Zend\Diactoros\Response;
-        }
-
-        $container->set('Psr\Http\Message\ServerRequestInterface', $request);
-
-        $container->set('Psr\Http\Message\ResponseInterface', $response);
-
-        return $container;
     }
 
     /**

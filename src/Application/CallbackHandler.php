@@ -77,12 +77,12 @@ class CallbackHandler
     {
         list($result, $response) = array(null, $this->container->get(self::RESPONSE));
 
-        if (interface_exists('Interop\Http\ServerMiddleware\MiddlewareInterface')) {
+        if (interface_exists('Interop\Http\Server\MiddlewareInterface')) {
             $middleware = new \Rougin\Slytherin\Middleware\Dispatcher($middlewares, $response);
 
-            $delegate = new \Rougin\Slytherin\Middleware\Delegate($callback);
+            $handler = new \Rougin\Slytherin\Middleware\RequestHandler($callback);
 
-            $result = $middleware->process($request, $delegate);
+            $result = $middleware->process($request, $handler);
         }
 
         return is_null($result) ? $callback($request) : $result;
